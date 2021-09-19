@@ -8,15 +8,6 @@ from fotos.views import home
 # Create your tests here.
 class HomeTest(TestCase):
 
-    def test_root_resolves_home(self):
-        found = resolve('/')
-        self.assertEqual(found.func, home)
-
-    def test_is_page_correct(self):
-        request = HttpRequest()
-        response = home(request)
-        html = response.content.decode('utf8')
-
-        self.assertTrue(html.startswith('<!DOCTYPE html>'))
-        self.assertIn("<title>Fotos</title>", html)
-        self.assertTrue(html.endswith('</html>'))
+    def test_uses_correct_template(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'fotos/home.html')

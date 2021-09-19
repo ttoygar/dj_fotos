@@ -4,4 +4,41 @@
 
 {% block body %}
     <h1>Hello World</h1>
+
+    <table class="table table-condensed table-responsive table-striped table-bordered">
+        <thead style="background-color:lightgray; position:sticky; top:0;">
+            <tr>
+                <th>Tarih</th>
+                <th>Notlar</th>
+                <th>User</th>
+                <th>Dosya</th>
+            </tr>
+        </thead>
+    {% for satir in table_content.all %}
+        <tr>
+            <td>{{ satir.tarih }}</td>
+            <td>{{ satir.notlar }}</td>
+            <td>{{ satir.user }}</td>
+            <td>{{ satir.dosya }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
+
+{% block form %}
+    <form enctype="multipart/form-data" method="post">
+<!--        {{ form.as_table }}-->
+
+<!--    {% if form.is_multipart %}-->
+<!--        <form enctype="multipart/form-data" method="post">-->
+<!--    {% else %}-->
+<!--        <form method="post">-->
+<!--    {% endif %}-->
+        {% csrf_token %}
+        <table>
+    {{ form.as_table }}
+        </table>
+        <input type="submit" value="Kaydet">
+    </form>
+
 {% endblock %}
