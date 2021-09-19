@@ -20,5 +20,4 @@ from fotos import views as foto
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', foto.home),
-    # path('^$', foto),
 ]

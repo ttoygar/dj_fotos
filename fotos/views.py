@@ -1,14 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
 
 from .models import Fotolar
 from .forms import FotoForm
-
-
-# Create your views here.
-# def home(request):
-#     return render(request, 'fotos/home.html', {'form':FotoForm()})
 
 
 def home(request):
@@ -29,11 +22,3 @@ def home(request):
     }
 
     return render(request, 'fotos/home.html', context=context)
-
-
-# def home(request):
-#     table_content = Fotolar.objects.order_by('-tarih')
-#     context = {
-#         'table_content': table_content,
-#     }
-#     return render(request, 'fotos/home.html', context=context)
